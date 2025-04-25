@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
@@ -75,7 +75,18 @@ return {
 
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
-        -- ["<Leader>b"] = { desc = "Buffers" },
+        ["<Leader>m"] = { desc = "Mix Test" },
+
+        -- mappings seen under group name "Mix Test"
+        ["<Leader>mr"] = { function() require("neotest").run.run() end, desc = "Run test"},
+        ["<leader>mf"] = { function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Run file" },
+        ["<leader>mu"] = { function() require("neotest").run.run({suite = true}) end, desc = "Run suite" },
+        ["<leader>ms"] = { function() require("neotest").summary.toggle() end, desc = "Summary" },
+        ["<leader>mp"] = { function() require("neotest").output_panel.toggle() end, desc = "Panel" },
+        ["<leader>mo"] = { function() require("neotest").output.open() end, desc = "Output" },
+        ["<leader>ml"] = { function() require("neotest").run.run_last() end, desc = "Run last" },
+        -- documentation https://github.com/nvim-neotest/neotest/blob/master/doc/neotest.txt
+
 
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
